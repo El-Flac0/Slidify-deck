@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>The Goal Machine</title>
+  <meta charset="utf-8">
+  <meta name="description" content="The Goal Machine">
+  <meta name="author" content="Andrew Laws, MSc.">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>The Goal Machine</h1>
+    <h2>Predictors of Success in Soccer</h2>
+    <p>Andrew Laws, MSc.<br/>Economist</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>The Problem</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>“How many countries can you think of where a corner kick is treated with the same applause as a goal? One. It only happens in England.” - Jose Mourinho</p>
+
+<ul>
+<li>Perceived predictors of success in soccer may not actually be what they seem.
+
+<ul>
+<li>Numbers of corners are routinely used in TV reports to imply attacking intent, is that meaningful?</li>
+<li>Do shots on target actually translate into more points?</li>
+<li>Are teams more successful if they foul the opposition more or less often?</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Measures of Success</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>&quot;Goals are overrated&quot; - Jonathan Wilson</p>
+
+<ul>
+<li>Users of the Goal Machine have the option to select between Mean Goals and Mean Points.</li>
+<li>Two metrics are success have been chosen as at any point in a match the aim is to score a goal;</li>
+<li>However, the aim of the match is win and secure the points, in this respect winning by one goal is the same as winning by six goals</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>The Goal Machine</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>&quot;Efficacy is not divorced from beauty&quot; - Luis Cesar Menotti</p>
+
+<p>The Goal Machine works by allowing users to select a combination of the following:</p>
+
+<ul>
+<li>Select the stat of interest from the drop-down menu;</li>
+<li>Select whether Home matches, Away matches, or Home and Away matches should be included;</li>
+<li>Select from the drop-down menu a club that played one season in the premier league between 2000 - 2014;</li>
+<li>Finally, select the desired metric from mean goals and mean stats.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Linear Model</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>&quot;It&#39;s all very simple, score more than your opponent and you win.&quot; - Johann Cryuff</p>
+
+<ul>
+<li>The Goal Machine is powered by a fairly straightforward Linear Model within the ggplot function:</li>
+</ul>
+
+<pre><code class="r">  g &lt;- ggplot(eplSelect, aes_string(x=stat, y=metric, colour=&quot;Location&quot;)) + geom_point() + 
+    geom_smooth(method=lm, se=FALSE, fullrange=TRUE) + 
+    scale_colour_discrete(limits = levels(eplSelect$Location)) +
+  print(g)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Demonstration</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>In the following, the correlation between fouls committed and mean goals for Arsenal, Home and Away, 2000 - 2014 is returned.</li>
+</ul>
+
+<p><img src="./GoalMacDemo.png" height="450px" width="800px" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='The Problem'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Measures of Success'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='The Goal Machine'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Linear Model'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Demonstration'>
+         5
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
